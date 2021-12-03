@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+
+{% block name %}
+{%  for project in detailOfProject %}
+{{project.title}}
+{{project.project_details}}
+{% endfor %}
+
+{% for com in comment %}
+    {{ com.project_id }}
+    {{ com.comment }}
+{% endfor %}
+{% endblock name %}

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %}view comment {% endblock  %}
+
+
+{% block name %}
+
+ </table>
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">comment</th>
+      <th scope="col">project</th>
+      <th scope="col">report</th>
+
+    </tr>
+  </thead>
+    {% for com in comment %}
+        <tr>
+
+    <td>{{ com.comment }}</td>
+    <td>{{ com.project_id }}</td>
+        <td >report button</td>
+          </tr>
+
+{% endfor %}
+
+
+
+  </tbody>
+</table>
+
+
+{% endblock name %}
