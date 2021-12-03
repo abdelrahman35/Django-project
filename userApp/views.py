@@ -11,7 +11,6 @@ from .forms  import SignUpForm,User
 
 def home(request):
 
-    # return HttpResponse('this is home page')
     return render(request,'base.html')
 
 def logOut(request):

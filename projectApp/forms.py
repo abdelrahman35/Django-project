@@ -1,5 +1,5 @@
 from django import forms
-from django.db.models import fields , fields_all
+from django.db.models import fields
 from .models import Projects, Projectcomments
 
 class ProjectAddForm(forms.ModelForm):

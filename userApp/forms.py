@@ -11,7 +11,10 @@ class SignUpForm(UserCreationForm):
     class Meta:
         model = User
         fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2','image' )
-
+        help_texts = {
+            'username': None,
+            'email': None,
+        }
 
 
 
@@ -20,3 +23,7 @@ class Userauth(forms.ModelForm):
     class Meta:
         model = User
         fields = ['username', 'password']
+        help_texts = {
+            'username': None,
+            'email': None,
+        }
