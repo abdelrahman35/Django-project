@@ -4,10 +4,12 @@ from django.http import HttpResponse
 from django.urls import reverse
 from projectApp import models
 from .forms import ProjectAddForm , AddCommentForm
+from django.contrib.auth.decorators import login_required
+
 # Create your views here.
 from .models import Projects , Projectcomments
 
-
+@login_required
 def AddProject(request):
     form = ProjectAddForm()
     if request.method == "POST":
@@ -18,19 +20,19 @@ def AddProject(request):
             myform.save()
             return redirect('viewprojects')
     return render(request, 'project/Addproject.html', {'form':form})
-
+@login_required
 def viewproject(request):
     projectslist = Projects.objects.all()
 
     return render(request, 'project/viewproject.html', {'projectslist': projectslist})
 
-
+@login_required
 def projectDetails(request,id):
     detailOfProject = Projects.objects.filter(project_id=id)
 
     return render(request,'project/showproject.html',{'detailOfProject':detailOfProject})
 
-
+@login_required
 def AddCommentView(request):
     form = AddCommentForm()
     if request.method == "POST":
@@ -47,7 +49,7 @@ def viewComments(request, project_id):
     comment = Projectcomments.objects.filter(project_id__projectcomments=project_id)
     return render(request, 'project/showproject.html', {'comment':comment})
     '''
-
+@login_required
 def viewComments(request):
     comment = Projectcomments.objects.all()
     return render(request, 'project/viewComment.html', {'comment':comment})
