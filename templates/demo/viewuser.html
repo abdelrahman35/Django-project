@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 {% block title %}list projects {% endblock  %}
 {% block name %}
-    <button class="btn btn-danger"><a style="color:white" href="{% url 'chan' %}"> change password</a></button>
 
 
 <table class="table">
@@ -11,7 +10,8 @@
       <th scope="col">email</th>
       <th scope="col">firsname</th>
       <th scope="col">lastname</th>
-         <th scope="col">phone</th>
+        <th scope="col">phone</th>
+
     </tr>
   </thead>
   <tbody>
@@ -21,6 +21,7 @@
       <td>{{user.first_name}}</td>
       <td>{{user.last_name}}</td>
         <td>01000000000</td>
+
     </tr>
 
 

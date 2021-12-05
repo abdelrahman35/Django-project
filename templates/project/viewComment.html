@@ -4,30 +4,16 @@
 
 {% block name %}
 
- </table>
-    <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">comment</th>
-      <th scope="col">project</th>
-      <th scope="col">report</th>
+ 
+{% for com in comment %}
 
-    </tr>
-  </thead>
-    {% for com in comment %}
-        <tr>
-
-    <td>{{ com.comment }}</td>
-    <td>{{ com.project_id }}</td>
-        <td >report button</td>
-          </tr>
-
-{% endfor %}
-
-
-
-  </tbody>
-</table>
-
-
+<div class="card-columns">
+<div class="card  style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">{{ com.comment }}</h5>
+    <p class="card-text">{{ com.project_id }} </p>
+    <button class="btn btn-danger"> <a class="nav-link" style="color: white;" href="{% url 'AddReport'%}">Report</a></button>
+  </div> 
+</div>
+</div>{% endfor %}
 {% endblock name %}

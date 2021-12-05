@@ -11,7 +11,7 @@ from .forms  import SignUpForm,User
 
 def home(request):
 
-    return render(request,'base.html')
+    return render(request,'project/home.html')
 
 def logOut(request):
     logoutsite(request)

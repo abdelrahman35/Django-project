@@ -3,7 +3,7 @@ from django.urls import path,include
 from django.contrib.auth import views  as Authentication
 from userApp import views
 urlpatterns = [
-    path('', views.home),
+    # path('', views.home),
     path('signup', views.signup, name='sign'),
     path('logout',views.logOut , name='logout'),
     path('viewuser',views.viewuser,name='viewUser'),

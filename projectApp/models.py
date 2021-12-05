@@ -42,6 +42,8 @@ class Projectcomments(models.Model):
     comment_id = models.AutoField(primary_key=True)
     comment = models.TextField(max_length=1000)
     project_id = models.ForeignKey(Projects, on_delete=models.CASCADE)
+    def __str__(self):
+        return self.comment
 
 class Commentsreport(models.Model):
     comment_id = models.ForeignKey(Projectcomments, on_delete=models.CASCADE)

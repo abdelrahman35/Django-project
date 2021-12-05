@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.urls import reverse
 from projectApp import models
-from .forms import ProjectAddForm , AddCommentForm
+from .forms import ProjectAddForm , AddCommentForm ,AddReportForm ,Commentsreport
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
@@ -53,6 +53,22 @@ def viewComments(request, project_id):
 def viewComments(request):
     comment = Projectcomments.objects.all()
     return render(request, 'project/viewComment.html', {'comment':comment})
+@ login_required
+def AddReportView(request):
+    forms = AddReportForm()
+    if request.method == "POST":
+        forms = AddReportForm(request.POST)
+        if forms.is_valid():
+            myforms= forms.save()
+            myforms.user = request.user
+            myforms.save()
+            return redirect('viewprojects')
+    return render(request, 'project/AddReport.html', {'forms': forms})
+@login_required
+def viewReports(request):
+    report = Commentsreport.objects.all()
+    return render(request, 'project/viewReport.html', {'report':report})
+
 #
 # def CommentAddView(request):
 #     form = AddCommentForm()
