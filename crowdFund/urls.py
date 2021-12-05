@@ -19,6 +19,7 @@ from userApp import views
 
 urlpatterns = [
     path('',views.home, name="home"),
+    path('base',views.baseView, name="base"),
     path('admin/', admin.site.urls),
     path('user/',include('userApp.urls')),
     path('project',include('projectApp.urls'))

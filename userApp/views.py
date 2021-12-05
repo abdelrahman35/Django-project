@@ -8,6 +8,8 @@ from .forms  import SignUpForm,User
 
 # Create your views here.
 
+def baseView(request):
+        return render(request,'base.html')
 
 def home(request):
 
@@ -17,7 +19,7 @@ def logOut(request):
     logoutsite(request)
 
     # return render(request,'demo/login.html')
-    return redirect('login')
+    return redirect('base')
 
 
 
@@ -50,4 +52,4 @@ def loginbase(request):
        print(user)
        if (user):
            loginauth(request,user)
-           return render(request, 'base.html')
+           return render(request, 'project/home.html')

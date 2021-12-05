@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 
 {% block name %}
+{% if user.is_authenticated %}
+
 <br>
 <p style="text-align: center;"> this is home page </p>
+{%endif%}
 {% endblock name %}
