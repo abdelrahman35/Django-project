@@ -4,7 +4,8 @@ from .forms import Userauth
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login as loginauth, logout as logoutsite,authenticate
 from django.shortcuts import render, redirect
-from .forms  import SignUpForm,User
+from .forms  import SignUpForm,User, userProfileForm
+from .models import Profile
 
 # Create your views here.
 
@@ -24,12 +25,27 @@ def logOut(request):
 
 
 
+# def viewuser(request):
+
+#     return render(request, 'demo/viewuser.html')
+
 def viewuser(request):
+    # profile = Profile.objects.all()
+    profile = Profile.objects.get(user=request.user)
+    # print(profile)
+    
+    return render(request, 'demo/viewuser.html', {'profile':profile})
 
-    return render(request, 'demo/viewuser.html')
-
-
-
+def userProfileView(request):
+    form = userProfileForm()
+    if request.method == "POST":
+        form = userProfileForm(request.POST)
+        if form.is_valid():
+            myform = form.save()
+            myform.user = request.user
+            myform.save()
+            return redirect('viewUser')
+    return render(request, 'demo/userProfile.html', {'form':form})
 
 def signup(request):
     if request.method == 'POST':

@@ -1,31 +1,53 @@
 {% extends 'base.html' %}
 {% block title %}list projects {% endblock  %}
 {% block name %}
+    <button class="btn btn-danger"><a style="color:white" href="{% url 'userProfileView' %}"> change password</a></button>
 
 
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">name</th>
-      <th scope="col">email</th>
-      <th scope="col">firsname</th>
-      <th scope="col">lastname</th>
-        <th scope="col">phone</th>
+<!--<table class="table">-->
+<!--  <thead>-->
+<!--    <tr>-->
+<!--      <th scope="col">name</th>-->
+<!--      <th scope="col">email</th>-->
+<!--      <th scope="col">firsname</th>-->
+<!--      <th scope="col">lastname</th>-->
+<!--         <th scope="col">phone</th>-->
 
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">{{user.username}}</th>
-      <td>{{user.email}}</td>
-      <td>{{user.first_name}}</td>
-      <td>{{user.last_name}}</td>
-        <td>01000000000</td>
+<!--    </tr>-->
+<!--  </thead>-->
+<!--  <tbody>-->
+<!--    <tr>-->
+<!--      <th scope="row">{{user.username}}</th>-->
+<!--      <td>{{user.email}}</td>-->
+<!--      <td>{{user.first_name}}</td>-->
+<!--      <td>{{user.last_name}}</td>-->
+<!--        <td>{{ user.phone}}</td>-->
 
-    </tr>
+<!--    </tr>-->
 
 
-  </tbody>
-</table>
+<!--  </tbody>-->
+<!--</table>-->
+<!--<div><img src="{{pro.picture.url}}"></div>-->
+
+<div class="card mb-3" style="max-width: 540px;">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="{{profile.picture.url}}" class="img-fluid rounded-start" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">Name:{{profile.name}}</h5>
+        <br>
+        <hr>
+        <p class="card-text">Email:{{profile.email}}</p>
+            <br>
+           <hr>
+        <p class="card-text"><small >phone:{{profile.phone}}</small></p>
+      </div>
+    </div>
+  </div>
+</div>
+
 {% endblock name %}
 
