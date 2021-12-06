@@ -15,5 +15,7 @@ urlpatterns = [
     path('viewreport', views.viewReports, name='viewreport'),
     path('comment',views.AddCommentView, name="Addcomment"),
     path('report', views.AddReportView, name="AddReport"),
+    path('api',views.ApiStudent.as_view(),name='api'),
+
 
 ]

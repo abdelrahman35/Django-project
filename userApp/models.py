@@ -10,3 +10,4 @@ class Profile (models.Model):
     picture=models.ImageField(max_length=225,upload_to='pic/',default=3)
     def __str__(self):
         return self.name
+        

@@ -5,7 +5,8 @@ from django.urls import reverse
 from projectApp import models
 from .forms import ProjectAddForm , AddCommentForm ,AddReportForm ,Commentsreport
 from django.contrib.auth.decorators import login_required
-
+from rest_framework import viewsets, generics
+from .api import Studentser
 # Create your views here.
 from .models import Projects , Projectcomments
 
@@ -43,6 +44,10 @@ def AddCommentView(request):
             myform.save()
             return redirect('viewprojects')
     return render(request, 'project/AddComment.html', {'form': form})
+
+class ApiStudent(generics.ListCreateAPIView):
+    queryset = Projects.objects.all()
+    serializer_class = Studentser
 
 '''
 def viewComments(request, project_id):
