@@ -3,11 +3,11 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.urls import reverse
 from projectApp import models
-from .forms import ProjectAddForm , AddCommentForm ,AddReportForm ,Commentsreport
+from .forms import ProjectAddForm , AddCommentForm ,AddReportForm ,Commentsreport,AddReportProjectForm
 from django.contrib.auth.decorators import login_required
 from rest_framework import viewsets, generics
 from .api import Studentser
-from .models import Projects , Projectcomments
+from .models import Projects , Projectcomments, ProjectsReport
 
 # Create your views here.
 
@@ -62,11 +62,27 @@ def AddReportView(request):
             myforms.save()
             return redirect('viewprojects')
     return render(request, 'project/AddReport.html', {'forms': forms})
+@ login_required
+def AddReportProjectView(request):
+    forms = AddReportProjectForm()
+    if request.method == "POST":
+        forms = AddReportProjectForm(request.POST)
+        if forms.is_valid():
+            myforms= forms.save()
+            myforms.user = request.user
+            myforms.save()
+            return redirect('viewprojects')
+    return render(request, 'project/AddReport.html', {'forms': forms})
 @login_required
 def viewReports(request):
     report = Commentsreport.objects.all()
     
     return render(request, 'project/viewReport.html', {'report':report})
+
+def viewProjectsReports(request):
+    report = ProjectsReport.objects.all()
+    
+    return render(request, 'project/projectreports.html', {'report':report})
 
 
 def viewLatest(request):
@@ -76,9 +92,13 @@ def viewLatest(request):
     highestRate = Projects.objects.filter(
     avg_rate__gte=Projects.objects.order_by('-avg_rate')[4].avg_rate
 ).order_by('-avg_rate')
+
+    highestDonations = Projects.objects.filter(
+    total_donations__gte=Projects.objects.order_by('-total_donations')[4].avg_rate
+).order_by('-total_donations')
     print(highestRate)
 
-    return render(request, 'project/home.html', {'latestProjects': latestProjects, 'highestRate':highestRate})
+    return render(request, 'project/home.html', {'latestProjects': latestProjects, 'highestRate':highestRate, 'highestDonations':highestDonations})
 
 
 def highestRate(request):

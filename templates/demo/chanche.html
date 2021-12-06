@@ -3,14 +3,7 @@
  {% block name %}
 
 <body style="text-align: center;" align='center'>
-    <body align='center'>
-        <form method="POST" class="form-group">
-              {% csrf_token %}
-              {{ form.as_p }}
-              <button type="submit" class="btn btn-success">change password</button>
-          </form>
-      
-      </body>
+    
     <br>
   <form method="POST" class="form-group " style="text-align: center;">
         {% csrf_token %}

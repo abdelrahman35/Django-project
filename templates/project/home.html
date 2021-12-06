@@ -15,8 +15,8 @@
 </p>
        <div class="row justify-content-center" >      {% for project in latestProjects %}
 
-      <div class="card p-1 m-1"  style="width: 16rem; ">
-        <div class="card-body"><small>Project Title: </small><a class="link" style="color: black" href="{% url 'projectdetails' project.project_id %}">{{ project.title }}</a>{{ project.project_id }}</h5>
+      <div class="card p-1 m-1 bg-dark"  style="width: 16rem; color: white;">
+        <div class="card-body"><small>Project Title: </small><a class="link" style="color: white" href="{% url 'projectdetails' project.project_id %}">{{ project.title }}</a></h5>
           <p class="card-text"><small>Rate: </small>{{project.avg_rate}} </p>
           <p class="card-text"><small>Target: </small>{{project.total_target}} </p>
           <p class="card-text"><small>Donations: </small>{{project.total_donations}} </p>
@@ -32,8 +32,25 @@
   </p>
          <div class="row justify-content-center" >      {% for project in highestRate %}
   
+        <div class="card p-1 m-1 bg-dark text-white"  style="width: 16rem; ">
+          <div class="card-body"><small>Project Title: </small><a class="link" style="color: black" href="{% url 'projectdetails' project.project_id %}">{{ project.title }}</a></h5>
+            <p class="card-text"><small>Rate: </small>{{project.avg_rate}} </p>
+            <p class="card-text"><small>Target: </small>{{project.total_target}} </p>
+            <p class="card-text"><small>Donations: </small>{{project.total_donations}} </p>
+          </div> 
+        </div>{% endfor %}
+      </div> 
+  
+        </div>
+     
+<hr>
+<div class="card-columns">
+  <p style="text-align: center;">      Highest Donated projects
+  </p>
+         <div class="row justify-content-center" >      {% for project in highestDonations %}
+  
         <div class="card p-1 m-1"  style="width: 16rem; ">
-          <div class="card-body"><small>Project Title: </small><a class="link" style="color: black" href="{% url 'projectdetails' project.project_id %}">{{ project.title }}</a>{{ project.project_id }}</h5>
+          <div class="card-body"><small>Project Title: </small><a class="link" style="color: black" href="{% url 'projectdetails' project.project_id %}">{{ project.title }}</a></h5>
             <p class="card-text"><small>Rate: </small>{{project.avg_rate}} </p>
             <p class="card-text"><small>Target: </small>{{project.total_target}} </p>
             <p class="card-text"><small>Donations: </small>{{project.total_donations}} </p>
