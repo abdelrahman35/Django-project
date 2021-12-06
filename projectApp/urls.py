@@ -14,7 +14,7 @@ urlpatterns = [
     path('idproject/<int:id>/',views.projectDetails,name='projectdetails'),
     path('viewcomment',views.viewComments,name='viewcomment'),
     path('viewreport', views.viewReports, name='viewreport'),
-    path('comment',views.AddCommentView, name="Addcomment"),
+    # path('comment',views.AddCommentView, name="Addcomment"),
     path('report', views.AddReportView, name="AddReport"),
     path('api',views.ApiStudent.as_view(),name='api'),
 

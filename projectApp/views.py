@@ -31,11 +31,7 @@ def viewproject(request):
 @login_required
 def projectDetails(request,id):
     detailOfProject = Projects.objects.filter(project_id=id)
-
-    return render(request,'project/showproject.html',{'detailOfProject':detailOfProject})
-
-@login_required
-def AddCommentView(request):
+    commentsOnproject = Projectcomments.objects.filter(project_id = id)
     form = AddCommentForm()
     if request.method == "POST":
         form = AddCommentForm(request.POST)
@@ -43,8 +39,8 @@ def AddCommentView(request):
             myform = form.save()
             myform.user = request.user
             myform.save()
-            return redirect('viewprojects')
-    return render(request, 'project/AddComment.html', {'form': form})
+    return render(request,'project/showproject.html',{'detailOfProject':detailOfProject, 'commentsOnproject':commentsOnproject,'form':form})
+
 
 class ApiStudent(generics.ListCreateAPIView):
     queryset = Projects.objects.all()
@@ -93,3 +89,20 @@ def highestRate(request):
     dataproject = Projects.objects.all()
 
     return render(request, 'project/viewproject.html', {'data': dataproject,'highestRate':highestRate})
+
+
+
+    # hash
+    '''
+@login_required
+def AddCommentView(request):
+    form = AddCommentForm()
+    if request.method == "POST":
+        form = AddCommentForm(request.POST)
+        if form.is_valid():
+            myform = form.save()
+            myform.user = request.user
+            myform.save()
+            return redirect('viewprojects')
+    return render(request, 'project/AddComment.html', {'form': form})
+'''
