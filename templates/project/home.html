@@ -6,4 +6,23 @@
 <br>
 <p style="text-align: center;"> this is home page </p>
 {%endif%}
+
+{% csrf_token %}
+<table border="1" width="100%">
+ <tr>
+        <th> project id </th>
+        <th> project name </th>
+        <th> average rate  </th>
+
+ {% for project in latestProjects %}
+<tr>
+<a>
+        <td>{{ project.project_id }}</td>
+        <td><button class="btn btn-secondary" ><a class="link" style="color: white" href="{% url 'projectdetails' project.project_id %}">{{ project.title }}</a></button></td>
+        <td>{{ project.avg_rate }}</td>
+     <td>
+     </a>
+ {% endfor %}
+
+</table>
 {% endblock name %}

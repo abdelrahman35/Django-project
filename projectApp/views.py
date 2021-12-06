@@ -7,8 +7,9 @@ from .forms import ProjectAddForm , AddCommentForm ,AddReportForm ,Commentsrepor
 from django.contrib.auth.decorators import login_required
 from rest_framework import viewsets, generics
 from .api import Studentser
-# Create your views here.
 from .models import Projects , Projectcomments
+
+# Create your views here.
 
 @login_required
 def AddProject(request):
@@ -49,11 +50,7 @@ class ApiStudent(generics.ListCreateAPIView):
     queryset = Projects.objects.all()
     serializer_class = Studentser
 
-'''
-def viewComments(request, project_id):
-    comment = Projectcomments.objects.filter(project_id__projectcomments=project_id)
-    return render(request, 'project/showproject.html', {'comment':comment})
-    '''
+
 @login_required
 def viewComments(request):
     comment = Projectcomments.objects.all()
@@ -74,29 +71,8 @@ def viewReports(request):
     report = Commentsreport.objects.all()
     return render(request, 'project/viewReport.html', {'report':report})
 
-#
-# def CommentAddView(request):
-#     form = AddCommentForm()
-#     if request.method == "POST":
-#         form = AddCommentForm(request.POST)
-#         if form.is_valid():
-#             commentform = form.save()
-#             commentform.user = request.user
-#             commentform.save()
-#             return redirect('projectDetails')
-#     return render(request, 'project/showproject.html', {'form': form})
-#
-#
-# def AddcommentHTML(request):
-#     if(request.method=='GET'):
-#
-#         return render(request, 'base.html',{})
-#     else:
-#         print(request.POST)
-#         #create student object
-#         comment =Projectcomments.objects.create(comment=request.POST['comment'],project_id_id=request.POST['project_id'])
-#         if (comment):
-#             return render(request, 'project/showproject.html', {'msg': 'Student is added '})
-#         else:
-#             return render(request, 'base.html', {'msg':'Error' })
 
+def viewLatest(request):
+    latestProjects = Projects.objects.all().order_by('-project_id')[:5][::-1]
+    return render(request, 'project/home.html', {'latestProjects': latestProjects})
+    
