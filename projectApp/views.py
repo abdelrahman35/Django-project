@@ -65,6 +65,7 @@ def AddReportView(request):
 @login_required
 def viewReports(request):
     report = Commentsreport.objects.all()
+    
     return render(request, 'project/viewReport.html', {'report':report})
 
 
@@ -74,7 +75,7 @@ def viewLatest(request):
 
     highestRate = Projects.objects.filter(
     avg_rate__gte=Projects.objects.order_by('-avg_rate')[4].avg_rate
-)
+).order_by('-avg_rate')
     print(highestRate)
 
     return render(request, 'project/home.html', {'latestProjects': latestProjects, 'highestRate':highestRate})
