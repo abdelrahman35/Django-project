@@ -15,7 +15,7 @@ from .models import Projects , Projectcomments
 def AddProject(request):
     form = ProjectAddForm()
     if request.method == "POST":
-        form = ProjectAddForm(request.POST)
+        form = ProjectAddForm(request.POST or None)
         if form.is_valid():
             myform = form.save()
             myform.user = request.user
@@ -74,5 +74,22 @@ def viewReports(request):
 
 def viewLatest(request):
     latestProjects = Projects.objects.all().order_by('-project_id')[:5][::-1]
-    return render(request, 'project/home.html', {'latestProjects': latestProjects})
-    
+   
+
+    highestRate = Projects.objects.filter(
+    avg_rate__gte=Projects.objects.order_by('-avg_rate')[4].avg_rate
+)
+    print(highestRate)
+
+    return render(request, 'project/home.html', {'latestProjects': latestProjects, 'highestRate':highestRate})
+
+
+def highestRate(request):
+    highestRate = Projects.objects.all().aggregate(max("Avg_rate"))[:5]
+
+    print(highestRate)
+    # for i in viewavr:
+    #     print(i.Avg_rate)
+    dataproject = Projects.objects.all()
+
+    return render(request, 'project/viewproject.html', {'data': dataproject,'highestRate':highestRate})

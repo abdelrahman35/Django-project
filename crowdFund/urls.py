@@ -16,10 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include 
 from userApp import views
+import projectApp.views
 from django.conf import  settings
 from django.conf.urls.static import static
 urlpatterns = [
-    path('',views.home, name="home"),
+    path('',projectApp.views.viewLatest, name="home"),
     path('base',views.baseView, name="base"),
     path('admin/', admin.site.urls),
     path('user/',include('userApp.urls')),

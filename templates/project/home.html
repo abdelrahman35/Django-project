@@ -23,6 +23,16 @@
      <td>
      </a>
  {% endfor %}
-
+     
 </table>
+{% for project in highestRate %}
+
+<div class="card-columns">
+<div class="card  style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">{{ project.title }}</h5>
+    <p class="card-text">{{project.avg_rate}} </p>
+  </div> 
+</div>
+</div>{% endfor %}
 {% endblock name %}
