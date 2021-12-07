@@ -157,7 +157,19 @@ def highestRate(request):
 
 def deleteProject(request, id):
     project = Projects.objects.filter(project_id=id).delete()
-    return redirect('viewprojects')
+    return redirect('viewprojects')    
+
+# def deleteProject(request, id):
+#     donations = Projects.objects.filter(project_id = id ).values_list('total_donations',flat=True)
+#     print(donations)
+#     target = Projects.objects.filter(project_id=id).values_list('total_target',flat=True)
+#     newtarget = target 
+#     if donations < newtarget:
+
+#         project = Projects.objects.filter(project_id=id).delete()
+#         return redirect('viewprojects')
+#     else:
+#         return redirect('projectadd')
 
     # hash
     '''

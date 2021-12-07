@@ -33,7 +33,7 @@
          <div class="row justify-content-center" >      {% for project in highestRate %}
   
         <div class="card p-1 m-1 bg-dark text-white"  style="width: 16rem; ">
-          <div class="card-body"><small>Project Title: </small><a class="link" style="color: black" href="{% url 'projectdetails' project.project_id %}">{{ project.title }}</a></h5>
+          <div class="card-body"><small>Project Title: </small><a class="link" style="color: white" href="{% url 'projectdetails' project.project_id %}">{{ project.title }}</a></h5>
             <p class="card-text"><small>Rate: </small>{{project.avg_rate}} </p>
             <p class="card-text"><small>Target: </small>{{project.total_target}} </p>
             <p class="card-text"><small>Donations: </small>{{project.total_donations}} </p>
