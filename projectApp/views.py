@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.urls import reverse
 from projectApp import models
-from .forms import ProjectAddForm , AddCommentForm ,AddReportForm ,Commentsreport,AddReportProjectForm
+from .forms import ProjectAddForm , AddCommentForm ,AddReportForm ,Commentsreport,AddReportProjectForm, UpdateProjectForm
 from django.contrib.auth.decorators import login_required
 from rest_framework import viewsets, generics
 from .api import Studentser
@@ -32,6 +32,16 @@ def viewproject(request):
 def projectDetails(request,id):
     detailOfProject = Projects.objects.filter(project_id=id)
     commentsOnproject = Projectcomments.objects.filter(project_id = id)
+    updateform = UpdateProjectForm()
+    if request.method == "POST":
+        updateform = UpdateProjectForm(request.POST)
+        if updateform.is_valid():
+            # sum_b = Projects.objects.filter(project_id= id).aggregate(sum('total_donations')).get(request.POST['total_donations__sum']) # Takes about 20% more time.
+            # oldDonations = Projects.objects.filter(project_id =id,total_donations = donations)
+            # print(oldDonations)
+            # project = Projects.objects.filter(project_id= id).update(total_donations = request.POST['total_donations'],avg_rate = request.POST['avg_rate'])
+            project = Projects.objects.filter(project_id = id)
+            project.update(total_donations = (int(project[0].total_donations)+int(request.POST['total_donations'])))
     form = AddCommentForm()
     if request.method == "POST":
         form = AddCommentForm(request.POST)
@@ -39,7 +49,7 @@ def projectDetails(request,id):
             myform = form.save()
             myform.user = request.user
             myform.save()
-    return render(request,'project/showproject.html',{'detailOfProject':detailOfProject, 'commentsOnproject':commentsOnproject,'form':form})
+    return render(request,'project/showproject.html',{'detailOfProject':detailOfProject, 'commentsOnproject':commentsOnproject,'form':form, 'updateform':updateform})
 
 
 class ApiStudent(generics.ListCreateAPIView):
@@ -73,6 +83,22 @@ def AddReportProjectView(request):
             myforms.save()
             return redirect('viewprojects')
     return render(request, 'project/AddReport.html', {'forms': forms})
+
+# student = Students.objects.filter(student_id=st_id).update(student_name=st_name,student_age=st_age)
+
+@login_required
+def UpdateProjectView(request, project_id):
+    updateform = UpdateProjectForm()
+    if request.method == "POST":
+        updateform = UpdateProjectForm(request.POST)
+        if updateform.is_valid():
+            project = Projects.objects.filter(project_id= project_id).update(total_donations = request.POST['total_donations'],avg_rate = request.POST['avg_rate'])
+            return redirect('projectdetails')
+
+
+
+
+
 @login_required
 def viewReports(request):
     report = Commentsreport.objects.all()
@@ -94,7 +120,7 @@ def viewLatest(request):
 ).order_by('-avg_rate')
 
     highestDonations = Projects.objects.filter(
-    total_donations__gte=Projects.objects.order_by('-total_donations')[4].avg_rate
+    total_donations__gte=Projects.objects.order_by('-total_donations')[4].total_donations
 ).order_by('-total_donations')
     print(highestRate)
 

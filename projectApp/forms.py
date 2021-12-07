@@ -7,6 +7,15 @@ class ProjectAddForm(forms.ModelForm):
         model = Projects
         fields = ['title', 'project_details', 'total_target', 'start_date', 'end_date', 'tag', 'category']
 
+
+
+class UpdateProjectForm(forms.ModelForm):
+    class Meta:
+        model = Projects
+        fields = ['avg_rate', 'total_donations']
+
+
+    
 class AddCommentForm(forms.ModelForm):
     class Meta:
         model = Projectcomments

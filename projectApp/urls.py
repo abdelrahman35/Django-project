@@ -12,6 +12,7 @@ urlpatterns = [
     path('viewprojects',views.viewproject,name='viewprojects'),
     path('viewLatest',views.viewLatest,name='viewLatest'),
     path('idproject/<int:id>/',views.projectDetails,name='projectdetails'),
+    path('UpdateProjectView',views.UpdateProjectView, name='UpdateProjectView'),
     path('viewcomment',views.viewComments,name='viewcomment'),
     path('viewreport', views.viewReports, name='viewreport'),
     path('viewProjectsReports', views.viewProjectsReports, name='viewProjectsReports'),

@@ -4,13 +4,13 @@
 {% block name %}
 {%  for project in detailOfProject %}
 
-<div class="card-columns">
-    <div class="card  style="width: 18rem;">
+<div class="card-columns m-3">
+    <div class="card w-100 "  style="width: 18rem;">
         <div class="card-title p-4"><small>Title:</small>
             <h5 > {{project.title}}</h5></div>
         
 
-      <div class="card-body">
+      <div class="card-body ">
           <small>Details:</small>
         <p>{{project.project_details}}
         </p>
@@ -36,12 +36,26 @@
     
     </div>{% endfor %}
 
-<hr>
+<div style="align-items: center" class="m-3">
+  <div class="card">
+
+<form method="post"style="text-align: center" class="form-group card-body m-3">
+
+  {% csrf_token %}
+  <div class="card-body">
+    <h5 class="card-title">Donations:   {{ updateform.total_donations }}  $
+    </h5>
+    <h5>Rate: {{ updateform.avg_rate }}</h5>
+  </div>
+  <button type="submit" class="btn btn-success">Update</button>
+
+</form></div></div>
+<!-- ==================================================== -->
 <p style="text-align: center;"> Comments Section</p>
 
 {% for com in commentsOnproject %}
 
-<div class="card-columns">
+<div class="card-columns m-3">
 <div class="card  style="width: 18rem;">
   <div class="card-body">
       <small>Comment:</small>
@@ -51,7 +65,7 @@
   </div> 
 </div>
 </div>{% endfor %}
-<div style="align-items: center">
+<div style="align-items: center" class="m-3">
     <div class="card">
       <form method="POST" style="text-align: center" class="form-group card-body">
         {% csrf_token %}
