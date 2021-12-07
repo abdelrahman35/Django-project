@@ -30,7 +30,10 @@
         <p>{{project.end_date}} 
         </p>
          
-      </div>     <button class="btn btn-danger m-2"> <a class="nav-link" style="color: white;" href="{% url 'AddReportProject'%}">Report Project</a></button>
+      </div>     <button class="btn btn-danger m-2"> <a class="nav-link" style="color: white;" href="{% url 'deleteProject' project.project_id%}">Delete</a></button>
+
+    </div>
+      </div>     <button class="btn btn-primary m-2"> <a class="nav-link" style="color: white;" href="{% url 'AddReportProject'%}">Report Project</a></button>
 
     </div>
     

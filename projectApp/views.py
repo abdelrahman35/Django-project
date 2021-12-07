@@ -42,6 +42,24 @@ def projectDetails(request,id):
             # project = Projects.objects.filter(project_id= id).update(total_donations = request.POST['total_donations'],avg_rate = request.POST['avg_rate'])
             project = Projects.objects.filter(project_id = id)
             project.update(total_donations = (int(project[0].total_donations)+int(request.POST['total_donations'])))
+            # -------------------
+            # project.update(
+            #     avg_rate=(int(project[0].avg_rate) + int(request.POST['avg_rate'])))
+            # project.update(raters=(int(project[0].raters) + 1))
+            # project.update(avg_rate=int(project[0].avg_rate / project[0].raters))
+            project.update(
+                avg_rate=(float(project[0].avg_rate) + float(request.POST['avg_rate'])))
+            project.update(raters=(float(project[0].raters) + 1))
+            project.update(avg_rate=float(project[0].avg_rate / project[0].raters))
+
+            # new_rate = project.update(
+            #     avg_rate=(float(project[0].avg_rate) + float(request.POST['avg_rate'])))
+            # rate_number = project.update(raters=(int(project[0].raters) + 1))
+            # project.update(avg_rate=float(new_rate / rate_number))
+
+            
+            
+
     form = AddCommentForm()
     if request.method == "POST":
         form = AddCommentForm(request.POST)
@@ -137,7 +155,9 @@ def highestRate(request):
 
     return render(request, 'project/viewproject.html', {'data': dataproject,'highestRate':highestRate})
 
-
+def deleteProject(request, id):
+    project = Projects.objects.filter(project_id=id).delete()
+    return redirect('viewprojects')
 
     # hash
     '''

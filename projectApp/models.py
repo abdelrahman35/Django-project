@@ -34,6 +34,7 @@ class Projects(models.Model):
     end_date = models.DateField()
     tag = models.CharField(max_length=6, choices=Tags_CHOICES, default='tag1')
     category = models.CharField(max_length=6, choices=CATEGORY_CHOICES, default='cat1')
+    raters = models.IntegerField(default=0)
 
     def __str__(self):
         return self.title
