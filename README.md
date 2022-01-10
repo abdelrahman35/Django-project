@@ -65,60 +65,13 @@
 
 ### 5. Samples:
 
-![main menu](https://github.com/abdelrahman35/ShellScriptProject/blob/main/samples/mainMenu.png)
-
-1. creating a database:
-
-   ![1](https://github.com/abdelrahman35/ShellScriptProject/blob/main/samples/1.png)
-
-2. list existing databases:
-
-   ![2](https://github.com/abdelrahman35/ShellScriptProject/blob/main/samples/2.png)
-
-3. connect to an existing databases:
-
-   ![3](https://github.com/abdelrahman35/ShellScriptProject/blob/main/samples/3.png)
-
-4. Table Menu
-
-   ![4](https://github.com/abdelrahman35/ShellScriptProject/blob/main/samples/4.png)
-
-5. create a table
-
-   ![5](https://github.com/abdelrahman35/ShellScriptProject/blob/main/samples/5.png)
-
-   ![6](https://github.com/abdelrahman35/ShellScriptProject/blob/main/samples/6.png)
-
-   ![7](https://github.com/abdelrahman35/ShellScriptProject/blob/main/samples/7.png)
-
-6. list available tables
-
-   ![8](https://github.com/abdelrahman35/ShellScriptProject/blob/main/samples/8.png)
-
-7. insert into a table
-
-   ![9](https://github.com/abdelrahman35/ShellScriptProject/blob/main/samples/9.png)
-
-   ![10](https://github.com/abdelrahman35/ShellScriptProject/blob/main/samples/10.png)
-
-8. select from a table
-
-   ![11](https://github.com/abdelrahman35/ShellScriptProject/blob/main/samples/11.png)
-
-9. update in a table
-
-   ![12](https://github.com/abdelrahman35/ShellScriptProject/blob/main/samples/12.png)
-
-   ![13](https://github.com/abdelrahman35/ShellScriptProject/blob/main/samples/13.png)
-
-   ![14](https://github.com/abdelrahman35/ShellScriptProject/blob/main/samples/14.png)
-
-10. delete a record in a table
-
-    ![15](https://github.com/abdelrahman35/ShellScriptProject/blob/main/samples/15.png)
-
-    ![16](https://github.com/abdelrahman35/ShellScriptProject/blob/main/samples/16.png)
-
-11. drop a table
-
-    ![17](https://github.com/abdelrahman35/ShellScriptProject/blob/main/samples/17.png)
+![1](https://github.com/abdelrahman35/Django-project/blob/main/PhotoSamples/1.png)
+![2](https://github.com/abdelrahman35/Django-project/blob/main/PhotoSamples/2.png)
+![3](https://github.com/abdelrahman35/Django-project/blob/main/PhotoSamples/3.png)
+![4](https://github.com/abdelrahman35/Django-project/blob/main/PhotoSamples/4.png)
+![5](https://github.com/abdelrahman35/Django-project/blob/main/PhotoSamples/5.png)
+![6](https://github.com/abdelrahman35/Django-project/blob/main/PhotoSamples/6.png)
+![7](https://github.com/abdelrahman35/Django-project/blob/main/PhotoSamples/7.png)
+![8](https://github.com/abdelrahman35/Django-project/blob/main/PhotoSamples/8.png)
+![9](https://github.com/abdelrahman35/Django-project/blob/main/PhotoSamples/9.png)
+![10](https://github.com/abdelrahman35/Django-project/blob/main/PhotoSamples/10.png)
